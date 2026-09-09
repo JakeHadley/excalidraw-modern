@@ -29,7 +29,7 @@ jobs:
           push: true
           tags: ghcr.io/jakehadley/excalidraw-web:latest
           build-args: |
-            VITE_APP_BACKEND_V2_GET_URL=http://192.168.50.98:3103/api/v2/scenes/
-            VITE_APP_BACKEND_V2_POST_URL=http://192.168.50.98:3103/api/v2/scenes/
-            VITE_APP_WS_SERVER_URL=http://192.168.50.98:3102/
+            VITE_APP_BACKEND_V2_GET_URL=https://excalidraw-api.hadhome.cloud/api/v2/scenes/
+            VITE_APP_BACKEND_V2_POST_URL=https://excalidraw-api.hadhome.cloud/api/v2/scenes/
+            VITE_APP_WS_SERVER_URL=https://excalidraw-room.hadhome.cloud/
             VITE_APP_ENABLE_TRACKING=false
