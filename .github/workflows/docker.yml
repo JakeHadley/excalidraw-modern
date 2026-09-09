@@ -1,0 +1,35 @@
+name: docker
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ghcr.io/jakehadley/excalidraw-web:latest
+          build-args: |
+            VITE_APP_BACKEND_V2_GET_URL=http://192.168.50.98:3103/api/v2/scenes/
+            VITE_APP_BACKEND_V2_POST_URL=http://192.168.50.98:3103/api/v2/scenes/
+            VITE_APP_WS_SERVER_URL=http://192.168.50.98:3102/
+            VITE_APP_ENABLE_TRACKING=false
