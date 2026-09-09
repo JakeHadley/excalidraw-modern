@@ -9,7 +9,7 @@
 #   VITE_APP_WS_SERVER_URL        e.g. http://192.168.50.98:3102/
 #   VITE_APP_ENABLE_TRACKING      false
 
-FROM node:24-alpine AS build
+FROM node:22-alpine AS build
 WORKDIR /opt/node_app
 
 ARG VITE_APP_BACKEND_V2_GET_URL
