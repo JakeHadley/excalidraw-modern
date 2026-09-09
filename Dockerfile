@@ -30,7 +30,7 @@ RUN apk add --no-cache git && \
     git clone --depth 1 --branch v0.18.1 https://github.com/excalidraw/excalidraw.git . && \
     rm -rf .git
 
-RUN yarn --frozen-lockfile --network-timeout 600000
+RUN yarn install --frozen-lockfile --network-timeout 600000 || yarn install --network-timeout 600000
 
 RUN yarn build:app:docker
 
