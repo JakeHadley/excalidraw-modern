@@ -27,7 +27,9 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/jakehadley/excalidraw-web:latest
+          tags: |
+            ghcr.io/jakehadley/excalidraw-web:latest
+            ghcr.io/jakehadley/excalidraw-web:${{ github.sha }}
           build-args: |
             VITE_APP_BACKEND_V2_GET_URL=https://excalidraw-api.hadhome.cloud/api/v2/scenes/
             VITE_APP_BACKEND_V2_POST_URL=https://excalidraw-api.hadhome.cloud/api/v2/scenes/
